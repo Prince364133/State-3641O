@@ -1,0 +1,296 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(#607d8b 15%, #000000 100%);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body,
+body * {
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3em;
+  color: #243035;
+  margin: 5vh 0;
+  text-shadow: 1px 1px 1px #00000070, -1px -1px 1px #f1f1f12b;
+  position: relative;
+}
+
+.title {
+  position: relative;
+  text-align: center;
+  font-weight: bold;
+  font-size: 5em;
+  color: #00000000;
+}
+
+.title:before {
+  position: absolute;
+  content: "SOLID";
+  text-shadow: 1px 1px 1px #00000045, 0px 0px 1px #a4f0ff70;
+}
+
+input.changepos {
+  width: 100%;
+  height: 320px;
+  opacity: 0;
+  position: absolute;
+  z-index: 3333;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+input.changepos:checked + .glass + .cube {
+  transform: rotateX(-57deg) rotateY(-40deg) translate(-107%, -41%);
+  transition: transform 0.5s ease 0s;
+}
+
+input.changepos:checked + .glass + .cube + .cube {
+  transform: rotateX(-130deg) rotateY(-57deg) translate(-283%, -346%);
+  transition: transform 0.75s ease 0s;
+}
+
+input.changepos:checked + .glass + .cube + .cube + .cube {
+  transform: rotateX(-133deg) rotateY(71deg) translate(13%, -212%);
+  transition: transform 0.85s ease 0s;
+}
+
+.click {
+  position: relative;
+  margin: 0 auto;
+  width: 280px;
+  height: 320px;
+  top: 4vh;
+}
+
+.click:before,
+.click:after {
+  content: "CLICK ON THE GLASS";
+  position: absolute;
+  bottom: -9vh;
+  text-align: center;
+  width: 280px;
+  font-size: 1.5em;
+  box-sizing: border-box;
+  filter: blur(1px);
+}
+
+.click:after {
+  filter: none;
+  color: #1c2428;
+}
+
+.click:hover:before,
+.click:hover:after {
+  color: #9fe7ff40;
+  text-shadow: 0 0 1px #9de8ff4f;
+}
+
+.glass {
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  width: 280px;
+  height: 320px;
+  border-radius: 140px/50px;
+  background-color: rgb(255 255 255 / 0.15);
+  top: 0%;
+  border: 10px solid rgb(255 255 255 / 0.15);
+  box-shadow: 0px 5px 15px -10px #000;
+}
+.glass:before,
+.glass:after {
+  position: absolute;
+  left: -10px;
+  top: -10px;
+  width: 280px;
+  height: 105px;
+  border-radius: 140px/50px;
+  content: "";
+  border: 10px solid rgb(255 255 255 / 0.14);
+  box-sizing: border-box;
+  box-shadow: 0 0 100px 1000px #ffffff1f;
+  z-index: 333;
+}
+.glass:after {
+  top: initial;
+  bottom: -10px;
+  border: 10px solid rgb(255 255 255 / 5%);
+  box-shadow: none;
+  z-index: -1;
+}
+
+input.changepos + .glass {
+  animation: reshake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+input.changepos:checked + .glass {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.cube {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: 80px;
+  height: 80px;
+  transform-style: preserve-3d;
+  transform: rotateX(24deg) rotateY(40deg) translate(-100%, -140%);
+  transition: transform 0.5s ease 0s;
+  z-index: -1;
+}
+
+.cube + .cube {
+  transform: rotateX(-30deg) rotateY(-27deg) translate(-196%, 34%);
+  transition: transform 0.75s ease 0s;
+}
+
+.cube + .cube + .cube {
+  transform: rotateX(148deg) rotateY(71deg) translate(10%, -100%);
+  transition: transform 0.85s ease 0s;
+}
+
+.cube > div {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 8.33333px;
+  background: radial-gradient(rgb(141 242 255), rgb(107 209 255));
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.2),
+    inset 0 0 4px rgba(255, 255, 255, 0.2);
+}
+
+.cube > div:nth-child(1) {
+  transform: translate3d(0, 0, 50px);
+}
+
+.cube > div:nth-child(2) {
+  transform: rotateX(90deg) translate3d(0, 0, 50px);
+}
+
+.cube > div:nth-child(3) {
+  transform: rotateX(180deg) translate3d(0, 0, 50px);
+}
+
+.cube > div:nth-child(4) {
+  transform: rotateX(270deg) translate3d(0, 0, 50px);
+}
+
+.cube > div:nth-child(5) {
+  transform: rotateY(90deg) translate3d(0, 0, 50px);
+}
+
+.cube > div:nth-child(6) {
+  transform: rotateY(-90deg) translate3d(0, 0, 50px);
+}
+
+.collection {
+  position: absolute;
+  bottom: 1.5em;
+  width: 100%;
+  text-align: center;
+}
+.collection a {
+  background: #ffffff29;
+  font-size: 0.9em;
+  font-family: Arial, Helvetica, sas;
+  padding: 0.5em;
+  box-sizing: border-box;
+  border-radius: 3px;
+  box-shadow: 0px 5px 15px -10px #000;
+  text-decoration: none;
+  color: #2f3d44;
+  font-weight: bold;
+}
+.collection a:hover {
+  color: #2c3a40;
+  text-shadow: 0 0 1px #242f34;
+  background: #13191b;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+}
+
+@keyframes reshake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+}
